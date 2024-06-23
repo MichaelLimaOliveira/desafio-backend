@@ -23,10 +23,6 @@ class TransactionService {
 
     this.userService.validateTransaction(sender, transactionDTO.amount);
 
-    if (!this.authorizeTransaction()) {
-      throw new Error('Transação mão autorizada');
-    }
-
     const transaction = new Transaction();
 
     transaction.amount = transactionDTO.amount;
@@ -43,6 +39,10 @@ class TransactionService {
     const receiver = await this.userService.findUserById(
       String(transaction.receiver._id),
     );
+
+    if (!this.authorizeTransaction()) {
+      throw new Error('Transação mão autorizada');
+    }
 
     this.userService.transferBalance(sender, receiver, transaction.amount);
 
@@ -61,7 +61,7 @@ class TransactionService {
     return transaction;
   }
 
-  public async authorizeTransaction() {
+  public authorizeTransaction() {
     // mock para um outro sistema que valida a transação
     return true;
   }
