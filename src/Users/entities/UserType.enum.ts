@@ -1,6 +1,6 @@
 enum UserType {
-  COMMON,
-  MERCHANT,
+  COMMON = 'COMMON',
+  MERCHANT = 'MERCHANT',
 }
 
 export default UserType;
