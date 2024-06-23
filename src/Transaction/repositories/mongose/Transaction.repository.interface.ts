@@ -20,6 +20,7 @@ class TransactionRepository implements ITransactionRepository {
     }
   }
 
+  // apenas para tests não faz parte do sistema
   async getAll() {
     return await this.transactionRepository.find().exec();
   }

@@ -3,9 +3,8 @@ import * as amqp from 'amqplib';
 
 @Injectable()
 export class RabbitmqService {
-  private readonly queue = 'transactions_queue';
-  private readonly url =
-    process.env.RABBITMQ_URI || 'amqp://user:password@localhost:5672';
+  private readonly queue = process.env.TRANSACTION_QUEUE;
+  private readonly url = process.env.RABBITMQ_URI;
 
   async sendTransaction(transaction: any): Promise<void> {
     try {
@@ -19,7 +18,6 @@ export class RabbitmqService {
           persistent: true,
         },
       );
-      console.log('Transaction sent:', transaction);
       await channel.close();
       await connection.close();
     } catch (error) {

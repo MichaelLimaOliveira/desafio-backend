@@ -12,6 +12,7 @@ export class TransactionController {
     return { status: 'Transaction sent successfully' };
   }
 
+  // apenas para tests não faz parte do sistema
   @Get()
   async getAll() {
     return this.transactionService.getAll();

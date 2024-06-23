@@ -62,22 +62,11 @@ class TransactionService {
   }
 
   public async authorizeTransaction() {
-    const url = 'https://util.devi.tools/api/v2/authorize';
+    // mock para um outro sistema que valida a transação
     return true;
-    // try {
-    //   const response = await fetch(url);
-
-    //   if (!response.ok) {
-    //     throw new Error(`HTTP error! status: ${response.status}`);
-    //   }
-    //   const data = await response.json();
-    //   console.log(data);
-    //   data.message = 'Autorizado' ? true : false;
-    // } catch (error) {
-    //   throw new Error(`Error fetching data: ${error}`);
-    // }
   }
 
+  // apenas para tests não faz parte do sistema
   async getAll() {
     return await this.transactionRepository.getAll();
   }
